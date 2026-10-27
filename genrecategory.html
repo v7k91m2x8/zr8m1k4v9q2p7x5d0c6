@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page</title>
+</head>
+<body>
+<script>
+const genres = [
+  {
+    mainGenre: "Romance",
+    icon: "fas fa-heart",
+    aliases: [
+      "Romance",
+      "Romance Novel",
+      "Romance Novels",
+      "Romance Fiction",
+      "Romantic Fiction",
+      "Romantic Novel",
+      "Romantic Novels",
+      "Romance,",
+      "Love Story",
+      "Love Stories",
+      "Love Fiction",
+      "Romantic Literature"
+    ],
+    subgenres: [
+      "Contemporary Romance",
+      "Historical Romance",
+      "Paranormal Romance",
+      "Fantasy Romance",
+      "Romantic Suspense",
+      "Romantic Comedy",
+      "Dark Romance",
+      "Erotic Romance",
+      "Young Adult Romance literature",
+      "New Adult Romance",
+      "Regency Romance",
+      "Military Romance",
+      "Sports Romance",
+      "Holiday Romance"
+    ]
+  },
+  {
+    mainGenre: "Suspense",
+    icon: "fas fa-bolt",
+    aliases: [
+      "Suspense",
+      "Suspence",
+      "Suspense Fiction",
+      "Suspense Novel",
+      "Suspense Novels"
+    ],
+    subgenres: [
+      "Crime Suspense",
+      "Mystery Suspense",
+      "Action Suspense",
+      "Domestic Suspense",
+      "Domestic",
+      "Romantic Suspense",
+      "Legal Suspense",
+      "Medical Suspense",
+      "Political Suspense",
+      "Spy Suspense",
+      "Military Suspense",
+      "Historical Suspense",
+      "Conspiracy Suspense",
+      "Police Suspense",
+      "Serial-Killer Suspense",
+      "Survival Suspense",
+      "Disaster Suspense",
+      "Adventure Suspense",
+      "Supernatural Suspense",
+      "Paranormal Suspense",
+      "Gothic Suspense",
+      "Horror Suspense",
+      "Science Fiction Suspense",
+      "Techno-Suspense",
+      "Heist Suspense",
+      "Revenge Suspense",
+      "Religious Suspense",
+      "Courtroom Suspense",
+      "Financial Suspense",
+      "Family Suspense"
+    ]
+  },
+  {
+    mainGenre: "Fantasy",
+    icon: "fas fa-hat-wizard",
+    aliases: [
+      "Fantasy,",
+      "Fantasy Novel",
+      "Fantasy Novels",
+      "Fantasy Fiction",
+      "Fantasy Literature"
+    ],
+    subgenres: [
+      "Epic Fantasy",
+      "High Fantasy",
+      "Urban Fantasy",
+      "Fantasy Comedy",
+      "Dark Fantasy",
+      "Grimdark",
+      "Gaslamp Fantasy",
+      "Romantic Fantasy",
+      "Fairy Tale",
+      "Mythological Fantasy",
+      "Portal Fantasy",
+      "Progression Fantasy",
+      "Historical Fantasy",
+      "LitRPG",
+      "Cozy Fantasy",
+      "Sword and Sorcery",
+      "Arthurian Romance"
+    ]
+  },
+  {
+    mainGenre: "Science Fiction",
+    icon: "fas fa-rocket",
+    aliases: [
+      "Science Fiction",
+      "Science Fiction Novel",
+      "Science Fiction Novels",
+      "Science-Fiction",
+      "Sci-Fi",
+      "Sci Fi",
+      "SciFi",
+      "SF",
+      "Speculative Fiction"
+    ],
+    subgenres: [
+      "science fiction comedy",
+      "Space Opera",
+      "Cyberpunk",
+      "Steampunk",
+      "Dystopian",
+      "Dystopian Fiction",
+      "Post-Apocalyptic",
+      "Military Science Fiction",
+      "Hard Science Fiction",
+      "Soft Science Fiction",
+      "Time Travel",
+      "science",
+      "Alien Invasion",
+      "Biopunk"
+    ]
+  },
+  {
+    mainGenre: "Mystery",
+    icon: "fas fa-search",
+    aliases: [
+      "Mystery",
+      "Mystery Novel",
+      "Mystery Novels",
+      "Mystery Fiction",
+      "Detective Novel",
+      "Detective Novels"
+    ],
+    subgenres: [
+      "Cozy Mystery",
+      "Detective Fiction",
+      "Crime Mystery",
+      "Historical Mystery",
+      "Psychological Mystery",
+      "Amateur Sleuth",
+      "Police Procedural",
+      "Whodunit",
+      "Locked-Room Mystery"
+    ]
+  },
+  {
+    mainGenre: "Thriller",
+    icon: "fas fa-exclamation-triangle",
+    aliases: [
+      "Thrillers",
+      "Thriller Novel",
+      "Thriller Novels",
+      "Thriller Fiction"
+    ],
+    subgenres: [
+      "Psychological Thriller",
+      "Crime Thriller",
+      "Legal Thriller",
+      "Medical Thriller",
+      "Political Thriller",
+      "Domestic Thriller",
+      "Techno-Thriller",
+      "Espionage",
+      "Espionage Thriller",
+      "Action Thriller",
+      "Historical Thriller"
+    ]
+  },
+  {
+    mainGenre: "Horror",
+    icon: "fas fa-ghost",
+    aliases: [
+      "Horror",
+      "Horror Novel",
+      "Horror Novels",
+      "Horror Fiction",
+      "Scary Fiction",
+      "Scary Novel"
+    ],
+    subgenres: [
+      "Supernatural Horror",
+      "Psychological Horror",
+      "Gothic Horror",
+      "Cosmic Horror",
+      "Body Horror",
+      "Folk Horror",
+      "Slasher",
+      "Survival Horror",
+      "Paranormal Horror",
+      "Occult Horror",
+      "Ghost Story",
+      "Monster Horror",
+      "Haunted House",
+      "supernatural",
+      "supernatural fiction",
+      "vampire literature"
+    ]
+  },
+  {
+    mainGenre: "Historical Fiction",
+    icon: "fas fa-landmark",
+    aliases: [
+      "Historical Fiction",
+      "Historical Novel",
+      "Historical Novels",
+      "Historical Literature",
+      "Period Fiction",
+      "Period Novel"
+    ],
+    subgenres: [
+      "Historical Romance",
+      "Historical Fantasy",
+      "Historical Mystery",
+      "Historical Thriller",
+      "Historical Adventure",
+      "Medieval Romance",
+      "Alternate History",
+      "Biographical Fiction"
+    ]
+  },
+  {
+    mainGenre: "Contemporary Fiction",
+    icon: "fas fa-city",
+    aliases: [
+      "Contemporary Fiction",
+      "Contemporary literature",
+      "Contemporary",
+      "Contemporary Novel",
+      "Contemporary Novels",
+      "Modern Fiction",
+      "Modern Novel",
+      "Modern Literature"
+    ],
+    subgenres: [
+      "Contemporary Romance",
+      "Contemporary Fantasy",
+      "Domestic Fiction",
+      "family life",
+      "Holiday Fiction",
+      "Women's Fiction",
+      "Coming-of-Age",
+      "Family Saga",
+      "Social Fiction"
+    ]
+  },
+  {
+    mainGenre: "Literary Fiction",
+    icon: "fas fa-feather-alt",
+    aliases: [
+      "Literary Fiction",
+      "Literary Novel",
+      "Literary Novels"
+    ],
+    subgenres: [
+      "Character-Driven Fiction",
+      "Experimental Fiction",
+      "Philosophical Fiction",
+      "Psychological Fiction",
+      "Epistolary Novel",
+      "Epistolary fiction",
+      "Social Commentary",
+      "Historical Literary Fiction",
+      "Contemporary Literary Fiction",
+      "Magical Realism"
+    ]
+  },
+  {
+    mainGenre: "Adventure",
+    icon: "fas fa-compass",
+    aliases: [
+      "Adventure",
+      "Adventure Fiction",
+      "Adventure Novel",
+      "Adventure Novels"
+    ],
+    subgenres: [
+      "Action Adventure",
+      "Historical Adventure",
+      "Fantasy Adventure",
+      "Survival Adventure",
+      "Exploration",
+      "Treasure Hunt",
+      "Pirate Adventure",
+      "Military Adventure"
+    ]
+  },
+  {
+    mainGenre: "Action",
+    icon: "fas fa-fist-raised",
+    aliases: [
+      "Action",
+      "Action Fiction",
+      "Action Novel",
+      "Action Novels"
+    ],
+    subgenres: [
+      "Action Adventure",
+      "Military Action",
+      "Spy Action",
+      "Superhero",
+      "Martial Arts",
+      "Survival Action",
+      "Action Thriller"
+    ]
+  },
+  {
+    mainGenre: "Young Adult",
+    icon: "fas fa-user-graduate",
+    aliases: [
+      "Young Adult",
+      "Young Adult Fiction",
+      "Young Adult Novel",
+      "Young Adult Novels",
+      "YA",
+      "YA Fiction",
+      "YA Novel",
+      "Teen Fiction",
+      "Teen Novel"
+    ],
+    subgenres: [
+      "Young Adult Romance",
+      "Young Adult Romance literature",
+      "Young Adult Fantasy",
+      "Young Adult Science Fiction",
+      "Young Adult Mystery",
+      "Young Adult Thriller",
+      "Young Adult Horror",
+      "Young Adult Contemporary",
+      "Young Adult Historical Fiction",
+      "Young Adult Dystopian"
+    ]
+  },
+  {
+    mainGenre: "Children's Fiction",
+    icon: "fas fa-child",
+    aliases: [
+      "Children's Fiction",
+      "Children's Novel",
+      "Children's Novels",
+      "Children's Literature",
+      "Kids Fiction",
+      "Kids' Fiction",
+      "Children's Book",
+      "Children's Books"
+    ],
+    subgenres: [
+      "Picture Book",
+      "Early Reader",
+      "Middle Grade",
+      "Children's Fantasy",
+      "Children's Adventure",
+      "Children's Mystery",
+      "Fairy Tale",
+      "Fable"
+    ]
+  },
+  {
+    mainGenre: "Western",
+    icon: "fas fa-hat-cowboy",
+    aliases: [
+      "Western",
+      "Western Fiction",
+      "Western Novel",
+      "Western Novels"
+    ],
+    subgenres: [
+      "Historical Western",
+      "Western Romance",
+      "Western Adventure",
+      "Western Mystery",
+      "Weird Western",
+      "Contemporary Western"
+    ]
+  },
+  {
+    mainGenre: "Crime",
+    icon: "fas fa-fingerprint",
+    aliases: [
+      "Crime",
+      "Crime Fiction",
+      "Crime Novel",
+      "Crime Novels",
+      "Criminal Fiction"
+    ],
+    subgenres: [
+      "Organized Crime",
+      "Detective Fiction",
+      "Police Procedural",
+      "Heist",
+      "Gangster",
+      "Noir fiction",
+      "Noir",
+      "Hardboiled"
+    ]
+  },
+  {
+    mainGenre: "Drama",
+    icon: "fas fa-theater-masks",
+    aliases: [
+      "Drama",
+      "Drama Fiction",
+      "Drama Novel",
+      "Drama Novels",
+      "Dramatic Fiction",
+      "Dramatic Novel"
+    ],
+    subgenres: [
+      "Family Drama",
+      "Psychological Drama",
+      "Historical Drama",
+      "Legal Drama",
+      "Medical Drama",
+      "Social Drama",
+      "Domestic Drama"
+    ]
+  },
+  {
+    mainGenre: "Lgbt literature",
+    icon: "fas fa-rainbow",
+    aliases: [
+      "lgbtq",
+      "lgbtq+",
+      "Lgbtq Fiction",
+      "Lgbtq Literature",
+      "LGBTQ+ Fiction",
+      "LGBT",
+      "LGBT Fiction",
+      "LGBT Literature"
+    ],
+    subgenres: [
+      "LGBTQ+ Romance",
+      "Gay Romance",
+      "Gay fiction",
+      "Lesbian Romance",
+      "Bisexual Romance",
+      "Transgender Fiction",
+      "lesbian literature",
+      "Queer Fiction",
+      "LGBTQ+ Fantasy",
+      "LGBTQ+ Mystery",
+      "LGBTQ+ Thriller",
+      "LGBTQ+ Historical Fiction",
+      "LGBTQ+ Contemporary Fiction",
+      "LGBTQ+ Young Adult",
+      "LGBTQ+ Coming-of-Age"
+    ]
+  },
+  {
+    mainGenre: "Non Fiction",
+    icon: "fas fa-book",
+    aliases: [
+      "Nonfiction",
+      "Non-Fiction"
+    ],
+    subgenres: [
+      "Non Fiction Comics",
+      "Young Adult Non Fiction",
+      "Biography",
+      "Autobiography",
+      "Memoir",
+      "Creative Nonfiction"
+    ]
+  },
+  {
+    mainGenre: "comics",
+    icon: "fas fa-book-open",
+    aliases: [
+      "comic",
+      "comic book",
+      "Comic Books"
+    ],
+    subgenres: [
+      "Non Fiction Comics",
+      "Graphic Novel"
+    ]
+  },
+  {
+    mainGenre: "Humor",
+    icon: "fas fa-laugh",
+    aliases: [
+      "Humorous Fiction",
+      "Humour"
+    ],
+    subgenres: [
+      "Comedy",
+      "Satire",
+      "Parody",
+      "Dark Humor",
+      "Black Comedy",
+      "Dark Comedy",
+      "Slapstick",
+      "Situational Comedy",
+      "Observational Humor",
+      "Surreal Humor",
+      "Absurdist Humor",
+      "Deadpan Humor",
+      "Dry Humor",
+      "Witty Humor",
+      "Irony",
+      "Sarcasm",
+      "Political Humor",
+      "Social Satire",
+      "Parodic Humor",
+      "Romantic Comedy",
+      "Comedy of Manners",
+      "Farce",
+      "Workplace Comedy",
+      "Family Comedy",
+      "School/College Comedy",
+      "Buddy Comedy",
+      "Fish-Out-of-Water Comedy",
+      "Mockumentary",
+      "Sketch Comedy",
+      "Humorous Adventure",
+      "Humorous Fantasy",
+      "Humorous Science Fiction",
+      "Humorous Mystery",
+      "Humorous Horror",
+      "Humorous Romance",
+      "Children's Humor",
+      "Young Adult Humor"
+    ]
+  },
+  {
+    mainGenre: "Folklore",
+    icon: "fas fa-book-reader",
+    aliases: [
+      "Folklore",
+      "Folklore Fiction",
+      "Folklore Literature",
+      "Folk Literature",
+      "Traditional Folklore"
+    ],
+    subgenres: [
+      "Fairy Tale",
+      "Myth",
+      "Mythology",
+      "Legend",
+      "Fable",
+      "Folktale",
+      "Urban Legend"
+    ]
+  },
+  {
+    exclude: [
+      "Absility",
+      "Fictionality"
+    ]
+  }
+];
+</script>
+</body>
+</html>
